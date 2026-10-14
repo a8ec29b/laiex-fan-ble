@@ -1,5 +1,13 @@
 # laiex-fan-ble
 
+Android App 位于 [`android/`](android/)，使用 Kotlin、Jetpack Compose 和 Material 3，最低支持 Android 9（API 28）。Android 12 及以上使用 Monet 动态取色；较早版本使用固定 Material 3 配色，跟随系统明暗主题。
+
+首次启动时蓝牙地址和 token 留空，在「设备设置」中自行填写。App 提供风扇开关、五挡风速、灯开关、三挡亮度及电量读取。配置中的 token 使用 Android Keystore 加密保存。
+
+[Android 构建、安装和验证说明](android/README.md)。Android 的实际蓝牙连接和控制需在真机上验证。
+
+## Linux 控制程序
+
 通过 Linux BlueZ 本地蓝牙控制方频风扇 `laiex.fan.lesfs`。使用已有设备 token 完成蓝牙认证和加密通信，运行时无需米家 App 或 Home Assistant。
 
 | 功能 | 属性名称 | 取值 |
@@ -75,6 +83,6 @@ Python 接口的开关值使用 `bool`，挡位使用 `int`。同一个连接的
 
 已在型号 `laiex.fan.lesfs`、固件 `2.1.1_0004` 上实测认证、五项属性读取、开关控制、全部五挡风速与全部三挡亮度。每次写入均通过回读验证，测试后恢复了初始状态。
 
-长期连接、自动重连、HomeKit / Matter 桥接尚未验证或实现。
+Linux 程序的长期连接与自动重连尚未验证或实现。
 
 协议参考：[MiAuth](https://github.com/dnandha/miauth)、[CUKTECH BLE Controller](https://github.com/zhyzhaogit/cuktech-ble-controller)、[mijia_ble_libs 归档](https://github.com/scooterhacking/mijia_ble_libs)。

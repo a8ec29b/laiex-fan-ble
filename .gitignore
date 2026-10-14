@@ -4,3 +4,9 @@ private/
 *credentials*.json
 .env
 *.log
+android/.gradle/
+android/local.properties
+android/**/build/
+*.apk
+*.keystore
+*.jks
